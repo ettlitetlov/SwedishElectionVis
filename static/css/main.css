@@ -1,0 +1,122 @@
+#selected_year{
+  text-align: center;
+}
+
+.chart-title{
+  text-align: center;
+}
+
+body.application{
+  background-color: rgb(246, 246, 246);
+}
+
+.navbar-inverse{
+  background-color: rgb(246, 246, 246);
+}
+
+.navbar {
+  border: none;
+}
+
+.chart-wrapper{
+  border: 3px solid #eeeefe;
+  border-radius: 3px;
+}
+
+
+
+.background path {
+  fill: none;
+  stroke: none;
+  stroke-width: 20px;
+  pointer-events: stroke;
+}
+
+.foreground path {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.axis .title {
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis.string {
+  font-size: 6px;
+}
+
+.label {
+  -webkit-transition: fill 125ms linear;
+}
+
+.active .label:not(.inactive) {
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.label.inactive {
+  fill: #ccc;
+}
+
+.foreground path.inactive {
+  stroke: #ccc;
+  stroke-opacity: .5;
+  stroke-width: 1px;
+}
+
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 100px;
+  height: 28px;
+  padding: 2px;
+  padding-top: 4px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.brushed {
+    stroke: #8e1b54;
+    opacity: 1.0;
+}
+
+.non_brushed {
+    opacity: 0.5;
+}
+
+      svg {
+      font: 10px sans-serif;
+      }
+
+
+      .brush .extent {
+      fill-opacity: .3;
+      stroke: #fff;
+      shape-rendering: crispEdges;
+      }
+
+      .axis line,
+      .axis path {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+      }
+
+      .axis text {
+      text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+      cursor: move;
+      }

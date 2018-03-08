@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" /> 
+  <title>Swedish election visualization</title>
+  <link rel="stylesheet" href="./static/lib/css//bootstrap.min.css">
+  <link rel="stylesheet" href="./static/lib/css/keen-dashboards.css">
+  <link rel="stylesheet" href="./static/lib/css/dc.css">
+  <link rel="stylesheet" href="./static/css/main.css">
+
+</head>
+<body class="application">
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+
+      <div class="row">
+
+        <!-- Map -->
+        <div class="col-sm-5">
+          <div class="chart-wrapper">
+            <div class="chart-stage">
+              <div id="map"></div>
+            </div>
+          </div>
+        </div>
+      
+        <!--slider-->
+        <div class="col-sm-1"  style="height: 558.6px;">
+          <div class="chart-wrapper">
+            <div class="chart-title">
+              Select Year
+            </div>
+            <div class="chart-stage"> <!--  style="height: 512.2px;"-->
+              <form id="form"> <!-- style="height: 500px;"-->
+              <input type="range" orient="vertical" min=2002 max=2014 step=4 id="year" value=2014 oninput="selected_year.value = year.value" autocomplete="off" onchange="update()"> <!-- style="height: 500px;"-->
+              <!--  <input type="radio" oninput="selected_year.value = year.value" name="year" value=2014 onclick="update()" checked>2014<br>
+                <input type="radio" oninput="selected_year.value = year.value" name="year" value=2010 onclick="update()">2010<br>
+                <input type="radio" oninput="selected_year.value = year.value" name="year" value=2006 onclick="update()">2006<br>
+                <input type="radio" oninput="selected_year.value = year.value" name="year" value=2002 onclick="update()">2002<br> -->
+
+                <output name="selected_year" id="selected_year" >2014</output>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <!-- Scatte>r plot -->
+        <div class="col-sm-6">
+          <div class="chart-wrapper">
+            <div class="chart-stage">
+              <div id="barchart"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PC plot 
+      <div class="row">
+          <div class="col-sm-12">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                PC Chart
+              </div>
+              <div class="chart-stage">
+                <div id="pc-chart"></div>
+              </div>
+            </div>
+          </div>
+      </div> -->
+
+    </div> <!--contriner -->
+
+
+  <script src="./static/lib/js/jquery.min.js"></script>
+  <script src="./static/lib/js/bootstrap.min.js"></script>
+  <script src="./static/lib/js/d3.min.js"></script>
+  <script src="https://d3js.org/topojson.v2.min.js"></script>
+  <script src="./static/lib/js/queue.js"></script>
+  <!-- Modules -->
+  <script src='./static/js/map.js' type='text/javascript'></script>
+  <script src='./static/js/pc.js' type='text/javascript'></script>
+  <script src='./static/js/bc.js' type='text/javascript'></script>
+  <script src='./static/js/main.js' type='text/javascript'></script>
+
+</body>
+</html>
