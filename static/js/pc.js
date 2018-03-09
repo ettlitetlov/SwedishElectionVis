@@ -85,7 +85,7 @@ function pc(data){
        .data(data)
        .enter().append("path")
        .attr("d", draw) // Uncomment when x axis is implemented
-	   .style("stroke", function(d, i){ index++; return partyColors[index]; });
+	    .style("stroke", function(d, i){ index++; return partyColors[index]; });
 	   
 	   
 
@@ -228,6 +228,34 @@ function pc(data){
             }
             
         ];
+    }
+
+    this.updatePC = function(dataSet) {
+      data = dataSet;
+      this.data = data;
+      maxVal = d3.max(data, function (d) { return Math.max(d.y2002,d.y2006,d.y2010,d.y2014)});
+
+      dimensions = axesDims(height);
+      // Sets the y-axis scales between 0 and maxvalue
+      dimensions.forEach(function(dim) {
+        dim.scale.domain(dim.type === "number"
+            ? d3.extent([maxVal, 0])
+            : data.map(function(d) { return d[dim.name]; }).sort());
+      });
+
+      svg.selectAll(".background").selectAll("path")
+       .data(data)
+       .transition()
+       .duration(750)
+       .attr("d", draw); // Uncomment when x axis is implemented */
+
+      var index = -1;
+      svg.selectAll(".foreground").selectAll("path")
+       .data(data)
+       .transition()
+       .duration(750)
+       .attr("d", draw) // Uncomment when x axis is implemented
+	    .style("stroke", function(d, i){ index++; return partyColors[index]; });
     }
 
 }

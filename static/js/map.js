@@ -11,6 +11,8 @@ function Map(data2014, data2010, data2006, data2002, pcYear, sweden_map_json){
   //active dataset
   var data = data2014;
   this.data = data;
+
+  var dataSetArray = [data2002,data2006,data2010,data2014];
   
   //var data = data2002;
   var time = 0;
@@ -24,6 +26,7 @@ function Map(data2014, data2010, data2006, data2002, pcYear, sweden_map_json){
 
   // The order of : Moderaterna, Centerpartiet, Folkpartiet, Kristdemokraterna, Miljöpartiet, Socialdemokraterna, Vänsterpartiet, Sverigedemokraterna, Övriga
   var partyColors = ['#004b8d', '#51ba66', '#3d70a4', '#6d94bb', '#379c47', '#d82f27', '#b02327', '#e7e518', '#BDC3C7'];
+  const partys = ["M", "C", "F", "KD", "MP", "S", "V", "SD", "Övriga"];
   
    //initialize zoom
    var zoom = d3.zoom()
@@ -118,7 +121,8 @@ function Map(data2014, data2010, data2006, data2002, pcYear, sweden_map_json){
           
     //selection
     .on("click",  function(d) {
-
+    var muniData = pcObjectBuilder(d);
+    pc.updatePC(muniData);
     bc.selectedMunicipaliti(d,data);
     });
 
@@ -155,6 +159,44 @@ function Map(data2014, data2010, data2006, data2002, pcYear, sweden_map_json){
     var end = new Date().getTime();
     time = time + (end - start);
     return index; 
+  }
+
+  // Function to build an object to send to parallel coordinates
+  function pcObjectBuilder(value){
+    var yearArray = [2002,2006,2010,2014];
+    var listOfLists = [];
+    var pcChartData = []
+      
+      for(var i = 0; i < 4; i++){
+        var theYear = "y" + yearArray[i];
+        var list = [];
+        var key = Object.keys(dataSetArray[i][0])[2];
+        var counter = 0;
+
+        for(var j = 0; dataSetArray[i].length; j++){
+
+          if(dataSetArray[i][j].region.match(/\d+/) == value.properties.KNKOD)
+          {
+            list.push(dataSetArray[i][j][key]);
+            counter++
+          }
+          listOfLists[i] = list;
+          if (counter == 9) break;
+        }
+
+      }
+
+      //Populate pcChartData
+      for(var i = 0; i < 9 ; i++){
+        pcChartData.push({
+          parti : partys[i],
+          ["y" + yearArray[0]] : listOfLists[0][i],
+          ["y" + yearArray[1]] : listOfLists[1][i],
+          ["y" + yearArray[2]] : listOfLists[2][i],
+          ["y" + yearArray[3]] : listOfLists[3][i]
+        })
+      }
+      return pcChartData;
   }
   
 

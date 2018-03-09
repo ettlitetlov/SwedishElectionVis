@@ -3,6 +3,7 @@ function bc(data){
     this.data = data;
     var flag = true;
     var div = '#barchart';
+
     var height = 500;
     var parentWidth = $(div).parent().width();
     var margin = {top: 20, right: 20, bottom: 60, left: 40},
@@ -141,7 +142,6 @@ function bc(data){
       var key = Object.keys(nowData[0])[2];
       var region = Object.keys(nowData[0])[0];
       var counter = 0;
-      var index = 0;
       var barChartData = [];
       var theYear = "y" + document.getElementById("year").value;
 
