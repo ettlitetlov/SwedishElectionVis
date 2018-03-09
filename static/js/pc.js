@@ -3,6 +3,7 @@
   Author: Kahin Akram Hassan
 */
 function pc(data){
+  var pcYear = data;
   this.data = data;
   var div = '#pc-chart';
 
@@ -235,13 +236,23 @@ function pc(data){
       this.data = data;
       maxVal = d3.max(data, function (d) { return Math.max(d.y2002,d.y2006,d.y2010,d.y2014)});
 
-      dimensions = axesDims(height);
       // Sets the y-axis scales between 0 and maxvalue
       dimensions.forEach(function(dim) {
         dim.scale.domain(dim.type === "number"
             ? d3.extent([maxVal, 0])
             : data.map(function(d) { return d[dim.name]; }).sort());
       });
+
+      svg.selectAll(".dimension")
+      .data(dimensions)
+      .transition()
+      .duration(750)
+      .attr("class", "dimension")
+      .attr("transform", function(d) {return "translate(" + x(d.name) + ")";});
+      
+      svg.selectAll(".axis")
+      .attr("class", "axis")
+      .each(function(d) { d3.select(this).transition().duration(750).call(yAxis.scale(d.scale)); }); 
 
       svg.selectAll(".background").selectAll("path")
        .data(data)
@@ -257,5 +268,6 @@ function pc(data){
        .attr("d", draw) // Uncomment when x axis is implemented
 	    .style("stroke", function(d, i){ index++; return partyColors[index]; });
     }
+
 
 }

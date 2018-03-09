@@ -99,7 +99,7 @@ function bc(data){
         if(flag){
             data = pcYEAR;
             svg.selectAll(".title").text( "Röststatistik i Sverige år " + document.getElementById("year").value);
-
+            pc.updatePC(pcYEAR);
         }
 
         flag = true;
@@ -134,7 +134,7 @@ function bc(data){
     }
 
     d3.select("#year")
-        .on("click", updateBar);
+        .on("click", updateBar); 
 		
     this.selectedMunicipaliti = function(value, nowData) {
       //if (value.properties.KNKOD == data) och hämta vilket årtal för att hämta från rätt dataset
