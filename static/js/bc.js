@@ -87,7 +87,6 @@ function bc(data){
             .attr("dy", "-.15em")
             .attr("text-anchor", "middle")
             .attr("dx", function(d) {
-                console.log(xScale.bandwidth());
                 return ((xScale.bandwidth()) + 3)/ 2;
             })
             .style("fill", "#B6B6B4")
