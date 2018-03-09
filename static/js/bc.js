@@ -48,7 +48,7 @@ function bc(data){
         .attr("transform","translate(" + width/2 +" , 10)")
         .attr("font-size", 18)
 		.style("text-anchor", "middle")
-        .text("Röststatistik i sverige år " + document.getElementById("year").value);
+        .text("Vote statistics in Sweden year: " + document.getElementById("year").value);
 
         var bar = svg.selectAll("rect").data(data, d => d.parti)                          //här,
         var theYear = "y" + document.getElementById("year").value;
@@ -98,7 +98,8 @@ function bc(data){
 
         if(flag){
             data = pcYEAR;
-            svg.selectAll(".title").text( "Röststatistik i Sverige år " + document.getElementById("year").value);
+            svg.selectAll(".title").text( "Vote statistics in Sweden year: " + document.getElementById("year").value);
+            d3.selectAll("div").select("#pcChart").text("History of election results in Sweden");
             pc.updatePC(pcYEAR);
         }
 
@@ -159,7 +160,8 @@ function bc(data){
       }
       flag = false;
       data = barChartData;
-      svg.selectAll(".title").text( "Röststatistik i " + value.properties.KNNAMN + " år " + document.getElementById("year").value);
+      svg.selectAll(".title").text( "Vote statistics in: " + value.properties.KNNAMN + ", year " + document.getElementById("year").value);
+      d3.selectAll("div").select("#pcChart").text("History of election results in: " + value.properties.KNNAMN);
       updateBar();
     };
     

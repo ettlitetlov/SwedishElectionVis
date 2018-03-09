@@ -6,6 +6,7 @@ function pc(data){
   var pcYear = data;
   this.data = data;
   var div = '#pc-chart';
+  
 
   //Finds the maxvalue of the data
   var maxVal = d3.max(data, function (d) { return Math.max(d.y2002,d.y2006,d.y2010,d.y2014)});
