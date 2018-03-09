@@ -8,6 +8,11 @@
 
 body.application{
   background-color: rgb(246, 246, 246);
+  padding: 30px 20px 0;
+}
+
+.question {
+  color: yellow !important;
 }
 
 .navbar-inverse{

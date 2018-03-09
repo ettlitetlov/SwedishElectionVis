@@ -98,7 +98,7 @@ function bc(data){
 
         if(flag){
             data = pcYEAR;
-            d3.selectAll(".title").text( "Röststatistik i Sverige år " + document.getElementById("year").value);
+            svg.selectAll(".title").text( "Röststatistik i Sverige år " + document.getElementById("year").value);
 
         }
 
@@ -160,7 +160,7 @@ function bc(data){
       }
       flag = false;
       data = barChartData;
-      d3.selectAll(".title").text( "Röststatistik i " + value.properties.KNNAMN + " år " + document.getElementById("year").value);
+      svg.selectAll(".title").text( "Röststatistik i " + value.properties.KNNAMN + " år " + document.getElementById("year").value);
       updateBar();
     };
     
