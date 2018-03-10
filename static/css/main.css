@@ -8,7 +8,11 @@
 
 body.application{
   background-color: rgb(246, 246, 246);
-  padding: 30px 20px 0;
+  padding: 20px 20px 0;
+}
+
+h1{
+  margin-top: 0;
 }
 
 .question {

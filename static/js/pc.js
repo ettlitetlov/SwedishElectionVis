@@ -17,7 +17,7 @@ function pc(data){
   var parentWidth = $(div).parent().width();
   var margin = {top: 40, right: 0, bottom: 10, left: 100},
       width = parentWidth - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
+      height = 300 - margin.top - margin.bottom;
 
   //Dimensions for the axes.
   var dimensions = axesDims(height);
